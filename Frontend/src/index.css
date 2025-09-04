@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Sans:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap');
+@import url('./fonts/WEB/css/cabinet-grotesk.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Red Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ef4444 0%, #b91c1c 100%);
+  border-radius: 8px;
+  border: 2px solid #1a1a1a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #ff0000 0%, #b91c1c 100%);
+}
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 8px;
+}
+
+@layer base {
+  :root {
+    --app-background: #000000;
+    --app-text-light: #ffffff;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply text-app-text-light;
+    background-color: #000000;
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+@layer components {
+  /* Glass card for login page */
+  .glass-card {
+    background: linear-gradient(120deg, rgba(0,0,0,0.98) 60%, rgba(20,0,0,0.95) 100%);
+    box-shadow: 0 8px 40px 0 #000a, 0 1.5px 8px 0 #0004;
+    border-radius: 1.25rem;
+    border: 1.5px solid #2a0000;
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  }
+
+  /* Floating label input */
+  .field {
+    position: relative;
+  }
+  .ui-input {
+    width: 100%;
+    padding: 14px 44px 14px 44px;
+    border-radius: 12px;
+    border: 1px solid #262626;
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    box-shadow: inset 0 0 0 1px rgba(255,0,0,0.15);
+  }
+  .ui-input::placeholder { color: transparent; }
+  .ui-input:focus {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+    background: rgba(10,0,0,0.9);
+  }
+  .ui-label {
+    position: absolute;
+    top: 50%;
+    left: 44px;
+    transform: translateY(-50%);
+    color: #7a7a7a;
+    font-size: 0.9rem;
+    pointer-events: none;
+    transition: all .15s ease;
+    background: transparent;
+    padding: 0 4px;
+  }
+  .field .input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7a7a7a;
+    display: grid; place-items: center;
+  }
+  .ui-input:focus + .ui-label,
+  .ui-input:not(:placeholder-shown) + .ui-label {
+    top: 0;
+    transform: translateY(-50%) scale(0.85);
+    left: 38px;
+    color: #ef4444;
+    background: #000;
+  }
+
+  /* Red CTA button */
+  .btn-red {
+    width: 100%;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    color: #fff;
+    background: linear-gradient(180deg, #ef4444, #b91c1c);
+    box-shadow: 0 10px 24px rgba(239, 68, 68, .25), inset 0 0 0 1px #7f1d1d;
+    transition: transform .06s ease, filter .2s ease, box-shadow .2s ease;
+  }
+  .btn-red:hover { filter: brightness(1.05); }
+  .btn-red:active { transform: translateY(1px); }
+  .btn-red:disabled { opacity: .6; cursor: not-allowed; }
+
+  /* Alerts */
+  .alert {
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .alert.error {
+    color: #fecaca;
+    background: linear-gradient(180deg, rgba(127, 29, 29, 0.35), rgba(0,0,0,0.6));
+    border: 1px solid #7f1d1d;
+  }
+  .alert.success {
+    color: #bbf7d0;
+    background: linear-gradient(180deg, rgba(20,83,45,0.35), rgba(0,0,0,0.6));
+    border: 1px solid #166534;
+  }
+  
+  /* Navbar Brand - Bitcount Grid Single */
+  .navbar-brand {
+    font-family: 'Bitcount Grid Single', 'JetBrains Mono', monospace;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Cabinet Grotesk Font Family */
+  .cabinet-grotesk {
+    font-family: 'CabinetGrotesk-Variable', 'CabinetGrotesk-Regular', 'CabinetGrotesk-Medium', 'CabinetGrotesk-Bold', 'CabinetGrotesk-Light', 'CabinetGrotesk-Extralight', 'CabinetGrotesk-Thin', 'CabinetGrotesk-Black', 'CabinetGrotesk-Extrabold', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Red dot after KnowMyStatus */
+  .navbar-red-dot {
+    color: #ef4444;
+    font-family: 'Bitcount Grid Single', 'JetBrains Mono', monospace;
+    font-weight: 400;
+  }
+
+  /* Center Navigation Links */
+  .nav-center-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 12px 20px;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .nav-center-link:hover {
+    color: #ff0000;
+    transform: translateY(-1px);
+  }
+
+  .nav-dot {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 24px;
+    margin: 0 12px;
+    transition: color 0.3s ease;
+  }
+
+  /* Dashboard Pill Button */
+  .dashboard-pill-btn {
+    padding: 10px 20px;
+    border: 2px dotted rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(15px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dashboard-pill-btn:hover {
+    border-color: rgb(235, 0, 0);
+    color: #ff0000;
+    transform: translateY(-3px);
+    box-shadow: 
+      0 10px 30px rgba(235, 0, 0, 0.3),
+      0 0 0 1px rgba(235, 0, 0, 0.2);
+    background: rgba(235, 172, 0, 0.05);
+  }
+
+  /* Dotted Arrow Effect */
+  .dotted-arrow {
+    stroke-dasharray: 2, 2;
+    stroke-linecap: round;
+    transition: all 0.3s ease;
+  }
+
+  .dashboard-pill-btn:hover .dotted-arrow {
+    stroke: #eb0000;
+    transform: translateX(3px);
+  }
+
+  /* Horizontal red loading bar */
+  .red-loading-bar {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ef4444 0%, #b91c1c 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .red-loading-bar::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -40%;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    background: rgba(255,255,255,0.25);
+    animation: loading-bar-move 1.2s linear infinite;
+    border-radius: 2px;
+  }
+
+  @keyframes loading-bar-move {
+    0% { left: -40%; }
+    100% { left: 100%; }
+  }
+}
+
+@layer utilities {
+  .animate-scroll {
+    animation: scroll 20s linear infinite;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Override for inputs and buttons to maintain red theme */
+input:focus {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 2px #ef4444 !important;
+}
+
+button.bg-black,
+button.bg-black:focus,
+button.bg-black:active {
+  background: #000 !important;
+  color: #ef4444 !important;
+  border-bottom: 2px solid #ef4444 !important;
+}
+
+button.bg-gray-900 {
+  background: #1a1a1a !important;
+  color: #fff !important;
+}
+
+/* QR Scanner Animations */
+@keyframes scan {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(190px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-scan {
+  animation: scan 2s linear infinite;
+}
